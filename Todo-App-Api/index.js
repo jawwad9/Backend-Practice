@@ -65,7 +65,7 @@ app.delete("/user/:id", (req, res) => {
     const { id } = req.params;
     const index = users.findIndex((item) => item.id === +id);
     if (index === -1) {
-        return res.status(404).send({ message: "User not found"})
+        return res.status(404).json({ message: "User not found"})
     };
     users.splice(index, 1);
     res.send({
@@ -74,6 +74,31 @@ app.delete("/user/:id", (req, res) => {
     });
 });
     
+
+// edit a user
+app.put("/user/:id", (req, res) => {
+    const {id} = req.params;
+    const {title} = req.body;
+    const index = users.findIndex((item) => item.id === +id);
+    if(index === -1) {
+        return res.status(404).json({message: "User not found"});
+    };
+
+    if(!title){
+        res.json({
+            message: "Please enter a title",
+        })
+        return
+    };
+
+    users[index].title = title;
+    res.status(200).json({
+        message: "User updated successfully",
+        data: users,
+    })
+
+})
+
 
 
 
