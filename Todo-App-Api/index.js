@@ -1,11 +1,14 @@
 import dotenv from 'dotenv'
 dotenv.config();
+import cors from 'cors';
 import express, { json } from 'express';
+
 
 const app = express();
 const port = process.env.PORT;
 
 // middleware 
+app.use(cors())
 app.use(express.json())
 
 const users = [
