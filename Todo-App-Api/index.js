@@ -33,7 +33,6 @@ app.get("/users", (req, res) => {
 });
 
 
-
 // new user add
 app.post("/user", (req, res) => {
     const { title } = req.body;
@@ -84,12 +83,13 @@ app.put("/user/:id", (req, res) => {
     const {title} = req.body;
     const index = users.findIndex((item) => item.id === +id);
     if(index === -1) {
-        return res.status(404).json({message: "User not found"});
+        return res.status(404).json({message: "User Not Found"});
     };
 
     if(!title){
         res.json({
             message: "Please enter a title",
+            data: users
         })
         return
     };
