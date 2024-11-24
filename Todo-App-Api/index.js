@@ -88,7 +88,7 @@ app.put("/user/:id", (req, res) => {
 
     if(!title){
         res.json({
-            message: "Please enter a title",
+            message: "Please enter a Title",
             data: users
         })
         return
