@@ -1,9 +1,11 @@
 import express from "express";
 import dotenv from "dotenv"
 dotenv.config();
-import connectDb from "./src/db/index.js";
 import bcrypt from "bcrypt"
 import cors from "cors"
+import jwt from "jsonwebtoken"
+import connectDb from "./src/db/index.js";
+
 
 
 const app = express();
@@ -15,9 +17,13 @@ app.get("/", (req, res) => {
     res.send("hello world!")
 })
 
+
 // bcrypt password
 const encrypt = "$2b$10$eza2WdScTzrO2uyW7qqhl.ll2W1ugvN4zO1pVsf.p4uoObsjsNnI."
 
+// jWT token 
+const token = 
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFhYWFhQGdtYWlsLmNvbSIsImlhdCI6MTczMzA4MDQ5Mn0.qpw0qV6vHHhFqmiM1EMjBP6p-a39lt1jPOXwnvZrs64"
 
 // bcrypt password create
 app.post("/encryptpassword", (req, res) => {
@@ -38,7 +44,25 @@ app.post("/checkPassword", (req, res) => {
 
         res.json({ message: "User logged in Successfully" })
     });
-})
+});
+
+
+// jWT token create 
+app.post("/generatetoken", (req, res) => {
+    const { email } = req.body;
+    var token = jwt.sign({ email }, process.env.JWT_SECRET);
+
+    res.json({ token })
+});
+
+// jWT Check token
+app.post("/checktoken", (req, res) => {
+    jwt.verify(token, process.env.JWT_SECRET, function(err, decoded) {
+        if (err) return res.json({ message: "error occured" });
+        console.log(decoded) // bar
+        res.json({ decoded })
+      });
+});
 
 
 // MONGO DB and Server connection
