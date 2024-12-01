@@ -29,6 +29,17 @@ app.post("/encryptpassword", (req, res) => {
 })
 
 
+// bcrypt check password 
+app.post("/checkPassword", (req, res) => {
+    const { password } = req.body;
+    bcrypt.compare(password, encrypt, function(err, result) {
+        if (err) return res.status(402).json({ message: "occured password"});
+        if (!result) return res.status(404).json({ message: "incorrect password" });
+
+        res.json({ message: "User logged in Successfully" })
+    });
+})
+
 
 // MONGO DB and Server connection
 connectDb().then(() => {
