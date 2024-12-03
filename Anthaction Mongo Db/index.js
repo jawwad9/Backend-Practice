@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.send("hello world!")
+    res.send("hello jawwad!")
 })
 
 app.use("/api/v1", userrouters);
