@@ -1,11 +1,12 @@
 import express from "express";
 import dotenv from "dotenv"
 dotenv.config();
-import bcrypt from "bcrypt"
 import cors from "cors"
 import jwt from "jsonwebtoken"
+import bcrypt from "bcrypt"
 import connectDb from "./src/db/index.js";
 import userrouters from "./src/routes/user.routers.js"
+import cookieParser from "cookie-parser";
 
 
 
@@ -13,6 +14,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser())
 
 app.get("/", (req, res) => {
     res.send("Hello jawwad!")
@@ -21,14 +23,14 @@ app.get("/", (req, res) => {
 app.use("/api/v1", userrouters);
 
 
-// bcrypt password
+// // bcrypt password
 // const encrypt = "$2b$10$eza2WdScTzrO2uyW7qqhl.ll2W1ugvN4zO1pVsf.p4uoObsjsNnI."
 
-// jWT token 
+// // jWT token 
 // const token = 
 // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFhYWFhQGdtYWlsLmNvbSIsImlhdCI6MTczMzA4MDQ5Mn0.qpw0qV6vHHhFqmiM1EMjBP6p-a39lt1jPOXwnvZrs64"
 
-// bcrypt password create
+// // bcrypt password create
 // app.post("/encryptpassword", (req, res) => {
 //     const { password } = req.body;
 //     bcrypt.hash(password, 10, function(err, hash) {
