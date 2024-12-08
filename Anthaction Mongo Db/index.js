@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser())
 
 app.get("/", (req, res) => {
-    res.send("Hello Home!")
+    res.send("Hello jawwad!")
 })
 
 app.use("/api/v1", userrouters);
