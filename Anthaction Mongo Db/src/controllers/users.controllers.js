@@ -54,8 +54,6 @@ const loginUser = async (req, res) => {
 
 // save user cookies
   res.cookie('refreshToken', refreshToken, {http: true, sucure: false})
-
-
     res.json({
         message: "user loggedIn successfully",
         accessToken, refreshToken,
