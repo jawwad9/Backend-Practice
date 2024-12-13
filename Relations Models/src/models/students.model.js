@@ -8,7 +8,7 @@ const studentSchema = new mongoose.Schema(
         },
         email: {
             type: String,
-            required: true,
+            required: true
         },
         enrolledCourse: {
             type: mongoose.Schema.Types.ObjectId,
@@ -18,6 +18,7 @@ const studentSchema = new mongoose.Schema(
     {
         timestamps: true
     }
-);
+)
+
 
 export default mongoose.model("Students", studentSchema);
