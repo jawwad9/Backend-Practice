@@ -6,7 +6,7 @@ import connectDB from "./src/db/index.js";
 const app = express()
 
 app.get('/', (req, res) => {
-  res.send('Hello world!')
+  res.send('Hello jawwad!')
 })
 
 connectDB().then(res => {
