@@ -8,6 +8,15 @@ const app = express()
 app.get('/', (req, res) => {
   res.send('Hello jawwad!')
 })
+app.get('/', (req, res) => {
+  res.send('Hello jawwad!')
+})
+app.get('/', (req, res) => {
+  res.send('Hello jawwad!')
+})
+app.get('/', (req, res) => {
+  res.send('Hello jawwad!')
+})
 
 connectDB().then(res => {
   app.listen(process.env.PORT,() => {
