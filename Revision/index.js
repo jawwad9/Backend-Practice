@@ -9,10 +9,6 @@ app.get('/', (req, res) => {
   res.send('Hello jawwad!')
 })
 
-app.get('/', (req, res) => {
-  res.send('Hello jawwad!')
-})
-
 connectDB().then(res => {
   app.listen(process.env.PORT,() => {
       console.log(`Server is running on port ${process.env.PORT}`)
