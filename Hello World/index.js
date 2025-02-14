@@ -9,6 +9,10 @@ app.get('/', (req, res) => {
 })
 
 
+app.get('/', (req, res) => {
+  res.send('Hello jawwad!')
+})
+
 app.get('/about', (req, res)=> {
     res.send('about')
   })
